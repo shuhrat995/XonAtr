@@ -154,13 +154,10 @@ function openBasket(card) {
   sheet.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 
-  // Update WhatsApp link with selected basket
+  // Update Instagram link with selected basket
   const orderBtn = document.querySelector("#order-button");
   if (orderBtn) {
-    const waText = encodeURIComponent(
-      `Assalomu alaykum! "${name}" atir yo'nalishini buyurtma qilmoqchiman.`
-    );
-    orderBtn.href = `https://wa.me/998901234567?text=${waText}`;
+    orderBtn.href = "https://instagram.com/xonatir";
   }
 }
 
@@ -283,7 +280,7 @@ document.querySelector("#order-button").addEventListener("click", () => {
   if (!selectedBasket) return;
   cartCount.textContent = "1";
   closeBasket();
-  showToast(`"${selectedBasket.name}" tanlandi. WhatsApp orqali buyurtma bering.`);
+  showToast(`"${selectedBasket.name}" tanlandi. Instagram orqali buyurtma bering.`);
 });
 
 // ============================================

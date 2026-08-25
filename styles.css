@@ -14,6 +14,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); overflow-x: hidden; }
 button, a { font: inherit; }
@@ -132,11 +133,12 @@ h1 em, h2 em, .quote em { color: var(--violet); font-weight: 500; }
 
 /* HERO ORBIT */
 .hero-orbit { position: relative; width: min(100%, 510px); aspect-ratio: 1 / .93; justify-self: end; }
-.hero-disc { position: absolute; inset: 8% 4% 2% 9%; display: grid; place-items: center; overflow: hidden; isolation: isolate; border-radius: 48% 52% 51% 49% / 52% 45% 55% 48%; background: linear-gradient(145deg, rgba(40,19,74,.2), rgba(11,6,19,.78)), url("https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=90") center/cover; color: var(--cream); transform: rotate(-10deg); animation: blob 10s ease-in-out infinite; }
+.hero-disc { position: absolute; inset: 8% 4% 2% 9%; display: grid; place-items: center; overflow: hidden; isolation: isolate; border-radius: 48% 52% 51% 49% / 52% 45% 55% 48%; background: linear-gradient(145deg, rgba(40,19,74,.2), rgba(11,6,19,.78)); color: var(--cream); transform: rotate(-10deg); animation: blob 10s ease-in-out infinite; }
+.hero-disc-logo { position: absolute; width: 60%; height: 60%; object-fit: contain; z-index: 0; opacity: 0.85; filter: drop-shadow(0 0 20px rgba(198,250,99,0.3)); }
 .hero-disc::before { content:""; position:absolute; z-index:-1; inset:12%; border:1px solid rgba(198,250,99,.5); border-radius:inherit; mix-blend-mode:screen; }
 .hero-disc::after { content:""; position:absolute; z-index:-1; inset:0; background:radial-gradient(circle at 62% 30%,rgba(198,250,99,.38),transparent 27%),linear-gradient(160deg,transparent 32%,rgba(21,10,42,.62)); }
 @keyframes blob { 50% { border-radius: 62% 38% 46% 54% / 39% 59% 41% 61%; transform: rotate(3deg) scale(1.02); } }
-.disc-content { position: relative; z-index: 1; display: grid; place-items: center; text-align: center; transform: rotate(10deg); }
+.disc-content { position: relative; z-index: 2; display: grid; place-items: center; text-align: center; transform: rotate(10deg); }
 .disc-content p { margin-bottom: 7px; font: 9px/1.35 var(--mono); letter-spacing: .1em; }
 .disc-content strong { display: block; font-size: clamp(6rem, 12vw, 9.5rem); font-weight: 500; letter-spacing: -.13em; line-height: .75; }
 .disc-content span { margin-top: 18px; font: 9px var(--mono); opacity: .72; }
