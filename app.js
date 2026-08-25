@@ -455,3 +455,103 @@ window.addEventListener("load", () => {
 });
 
 console.log("🌸 XonAtir — Sizning hidingiz. Yangilangan versiya yuklandi.");
+
+// ============================================
+// EXIT POPUP (Exit-Intent)
+// ============================================
+(function() {
+  var exitPopup = document.getElementById('exit-popup');
+  var exitClose = document.getElementById('exit-popup-close');
+  var exitBackdrop = document.getElementById('exit-popup-backdrop');
+  
+  if (!exitPopup) return;
+  
+  // Show exit popup on mouse leave (desktop) or after 45s (mobile)
+  var exitShown = false;
+  
+  document.addEventListener('mouseleave', function(e) {
+    if (exitShown || e.clientY > 10) return;
+    exitShown = true;
+    exitPopup.classList.add('is-visible');
+    exitPopup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  // Mobile: show after 45 seconds
+  setTimeout(function() {
+    if (!exitShown) {
+      exitShown = true;
+      exitPopup.classList.add('is-visible');
+      exitPopup.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }, 45000);
+  
+  function closeExitPopup() {
+    exitPopup.classList.remove('is-visible');
+    exitPopup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  
+  if (exitClose) exitClose.addEventListener('click', closeExitPopup);
+  if (exitBackdrop) exitBackdrop.addEventListener('click', closeExitPopup);
+  
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && exitPopup.classList.contains('is-visible')) {
+      closeExitPopup();
+    }
+  });
+})();
+
+// ============================================
+// SOCIAL PROOF POPUP ("Kimdir buyurtma qildi")
+// ============================================
+(function() {
+  var spPopup = document.getElementById('social-proof-popup');
+  var spAvatar = document.getElementById('sp-avatar');
+  var spName = document.getElementById('sp-name');
+  var spLocation = document.getElementById('sp-location');
+  
+  if (!spPopup) return;
+  
+  var names = [
+    { name: 'Nodira', city: 'Toshkent', color: '#c6fa63' },
+    { name: 'Sanjar', city: 'Samarqand', color: '#f37962' },
+    { name: 'Malika', city: 'Andijon', color: '#b8e9d4' },
+    { name: 'Akbar', city: 'Qo\'qon', color: '#6048c9' },
+    { name: 'Nilufar', city: 'Buxoro', color: '#c6fa63' },
+    { name: 'Jasur', city: 'Namangan', color: '#f37962' },
+    { name: 'Dilshod', city: 'Urganch', color: '#6048c9' },
+    { name: 'Sabohat', city: 'Farg\'ona', color: '#b8e9d4' },
+    { name: 'Otabek', city: 'Jizzax', color: '#c6fa63' },
+    { name: 'Gulnora', city: 'Termiz', color: '#f37962' }
+  ];
+  
+  var products = ['Nozik & nafis', 'Jozibali & sirli', 'Sof & erkin'];
+  
+  function showSocialProof() {
+    var person = names[Math.floor(Math.random() * names.length)];
+    var product = products[Math.floor(Math.random() * products.length)];
+    
+    spAvatar.textContent = person.name[0];
+    spAvatar.style.background = person.color;
+    spName.textContent = person.name;
+    spLocation.textContent = person.city;
+    
+    spPopup.classList.add('is-visible');
+    
+    setTimeout(function() {
+      spPopup.classList.remove('is-visible');
+    }, 4000);
+  }
+  
+  // Show first popup after 8 seconds, then every 15-25 seconds
+  setTimeout(function() {
+    showSocialProof();
+    setInterval(function() {
+      var delay = 15000 + Math.random() * 10000;
+      setTimeout(showSocialProof, delay);
+    }, 25000);
+  }, 8000);
+})();
