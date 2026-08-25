@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#101B19" />
+    <meta name="description" content="XonAtir — O'zbekistondagi premium atirlar do'koni. Sizinga mos atirni toping." />
     <title>XonAtir — Sizning hidingiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,13 +12,24 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- PAGE LOADER -->
     <div class="page-loader" id="page-loader" aria-label="Sahifa yuklanmoqda">
       <div class="loader-mark"><span>×</span></div>
       <p>XONATIR / ATIRLAR UYI</p>
       <div class="loader-line"><i></i></div>
     </div>
 
+    <!-- URGENCY BANNER -->
+    <div class="urgency-banner" id="urgency-banner">
+      <div class="urgency-inner">
+        <span class="urgency-fire">🔥</span>
+        <p>CHEKLANGAN VAQT: <strong>Hozir 30% ONLAYN CHEGIRMA!</strong> Faqat <span id="countdown-timer">02:59:59</span></p>
+        <button class="urgency-close" id="urgency-close" aria-label="Yopish">×</button>
+      </div>
+    </div>
+
     <main>
+      <!-- HERO SECTION -->
       <section class="hero section-shell" id="top">
         <nav class="nav" aria-label="Asosiy navigatsiya">
           <a class="brand" href="#top" aria-label="XonAtir bosh sahifa">
@@ -25,7 +37,9 @@
             <span>XonAtir</span>
           </a>
           <a href="#how-it-works" class="nav-link">Atir tanlash usuli <span>↘</span></a>
-          <button class="cart-button" id="cart-button" type="button" aria-label="Tanlangan atir yo‘nalishini ochish">
+          <a href="#prices" class="nav-link">Narxlar <span>↘</span></a>
+          <a href="#reviews" class="nav-link">Sharhlar <span>↘</span></a>
+          <button class="cart-button" id="cart-button" type="button" aria-label="Tanlangan atir yo'nalishini ochish">
             <span class="cart-label">Tanlovingiz</span>
             <span class="cart-count" id="cart-count">0</span>
           </button>
@@ -35,14 +49,28 @@
           <div class="hero-copy reveal">
             <p class="eyebrow"><i></i> XONQA / ATIRLAR UYI</p>
             <h1>Iz qoldirish uchun<br /><em>baland gapirish</em><br />shart emas.</h1>
-            <p class="hero-text">Hid — siz haqingizda aytilgan birinchi so‘z. XonAtirda kayfiyatingizga mos atirni toping.</p>
+            <p class="hero-text">Hid — siz haqingizda aytilgan birinchi so'z. XonAtirda kayfiyatingizga mos atirni toping.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="#savats">
                 Atirimni topish <span>→</span>
               </a>
-              <p class="notes-line"><b>Notalar:</b> oud · musk · amber</p>
+              <a class="button button-whatsapp" href="https://wa.me/998901234567?text=Assalomu alaykum! XonAtir dan atir buyurtma qilmoqchiman" target="_blank" rel="noopener">
+                <span class="whatsapp-icon">💬</span> WhatsApp buyurtma <span>→</span>
+              </a>
             </div>
+            <p class="notes-line"><b>Notalar:</b> oud · musk · amber</p>
             <div class="availability"><span></span> Bugun ochiq • atirlar tanlovi sizni kutmoqda</div>
+            
+            <!-- Social proof mini -->
+            <div class="hero-social-proof">
+              <div class="avatar-stack">
+                <div class="avatar" style="background:#c6fa63;">N</div>
+                <div class="avatar" style="background:#f37962;">S</div>
+                <div class="avatar" style="background:#6048c9;">M</div>
+                <div class="avatar" style="background:#b8e9d4;">A</div>
+              </div>
+              <p><strong>1,200+</strong> mijoz ishonchini qozongan</p>
+            </div>
           </div>
 
           <div class="hero-orbit reveal reveal-delay">
@@ -59,7 +87,7 @@
             </div>
             <div class="floating-card card-lime">
               <span>Siz uchun</span>
-              <strong>O‘zingizga<br />mos tanlov</strong>
+              <strong>O'zingizga<br />mos tanlov</strong>
               <i>↗</i>
             </div>
             <div class="floating-card card-coral">
@@ -77,14 +105,15 @@
         </div>
       </section>
 
+      <!-- PICKER SECTION -->
       <section class="picker section-shell" id="savats">
         <div class="section-top reveal">
           <p class="eyebrow"><i></i> HIDINGIZNI KASHF ETING</p>
-          <h2>Bugun dunyoga<br />qanday ko‘rinasiz?</h2>
-          <p>Kayfiyatingizni tanlang. Sizga mos notalarni his qiling. Shundan keyin atirni sinab ko‘ring.</p>
+          <h2>Bugun dunyoga<br />qanday ko'rinassiz?</h2>
+          <p>Kayfiyatingizni tanlang. Sizga mos notalarni his qiling. Shundan keyin atirni sinab ko'ring.</p>
         </div>
 
-        <div class="note-filter reveal" role="group" aria-label="Atir oilasi bo‘yicha saralash">
+        <div class="note-filter reveal" role="group" aria-label="Atir oilasi bo'yicha saralash">
           <button class="note-filter-button is-active" type="button" data-filter="all">Barchasi <span>03</span></button>
           <button class="note-filter-button" type="button" data-filter="floral">Floral</button>
           <button class="note-filter-button" type="button" data-filter="woody">Woody</button>
@@ -95,101 +124,341 @@
           <article class="basket-card basket-card--sun reveal" data-family="floral" data-basket="bloom" data-name="Nozik & nafis" data-price="Floral notes" data-items="3" data-image="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&amp;fit=crop&amp;w=960&amp;q=85">
             <div class="card-number">01</div>
             <div class="basket-illustration illustration-morning">
-              <img class="perfume-photo perfume-photo--sun" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=960&q=85" alt="Nozik atir flakoni" />
+              <img class="perfume-photo perfume-photo--sun" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=960&q=85" alt="Nozik atir flakoni" loading="lazy" />
             </div>
             <p class="basket-kicker">AYOLLAR UCHUN</p>
             <h3>Nozik<br />& nafis</h3>
-            <div class="card-bottom"><span>Floral • musk • vanilla</span><button type="button" aria-label="Nozik va nafis atirlarini ko‘rish">→</button></div>
+            <div class="card-bottom"><span>Floral • musk • vanilla</span><button type="button" aria-label="Nozik va nafis atirlarini ko'rish">→</button></div>
           </article>
 
           <article class="basket-card basket-card--violet featured-card reveal reveal-delay" data-family="woody" data-basket="oud" data-name="Jozibali & sirli" data-price="Woody notes" data-items="3" data-image="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&amp;fit=crop&amp;w=960&amp;q=85">
             <div class="featured-tag">SIGNATURE TANLOV</div>
             <div class="card-number">02</div>
             <div class="basket-illustration illustration-family">
-              <img class="perfume-photo perfume-photo--violet" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=960&q=85" alt="Qoramtir premium atir flakoni" />
+              <img class="perfume-photo perfume-photo--violet" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=960&q=85" alt="Qoramtir premium atir flakoni" loading="lazy" />
             </div>
             <p class="basket-kicker">UNISEKS / ERKAKLAR UCHUN</p>
             <h3>Jozibali<br />& sirli</h3>
-            <div class="card-bottom"><span>Oud • amber • leather</span><button type="button" aria-label="Jozibali va sirli atirlarini ko‘rish">→</button></div>
+            <div class="card-bottom"><span>Oud • amber • leather</span><button type="button" aria-label="Jozibali va sirli atirlarini ko'rish">→</button></div>
           </article>
 
           <article class="basket-card basket-card--mint reveal reveal-delay-2" data-family="fresh" data-basket="fresh" data-name="Sof & erkin" data-price="Fresh notes" data-items="3" data-image="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&amp;fit=crop&amp;w=960&amp;q=85">
             <div class="card-number">03</div>
             <div class="basket-illustration illustration-guest">
-              <img class="perfume-photo perfume-photo--mint" src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=960&q=85" alt="Yengil va sof atir flakoni" />
+              <img class="perfume-photo perfume-photo--mint" src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=960&q=85" alt="Yengil va sof atir flakoni" loading="lazy" />
             </div>
             <p class="basket-kicker">KUNLIK VA YOZGI TANLOV</p>
             <h3>Sof<br />& erkin</h3>
-            <div class="card-bottom"><span>Citrus • aquatic • green</span><button type="button" aria-label="Sof va erkin atirlarini ko‘rish">→</button></div>
+            <div class="card-bottom"><span>Citrus • aquatic • green</span><button type="button" aria-label="Sof va erkin atirlarini ko'rish">→</button></div>
           </article>
         </div>
       </section>
 
+      <!-- PRICING SECTION -->
+      <section class="pricing section-shell" id="prices">
+        <div class="section-top reveal">
+          <p class="eyebrow"><i></i> NARXLAR</p>
+          <h2>O'zingizga mos<br /><em>narxni</em> tanlang</h2>
+          <p>Barcha atirlar premium sifatda. O'ziga xos notalar bilan.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card reveal">
+            <div class="price-badge">BAZOVY</div>
+            <h3>Nozik & nafis</h3>
+            <div class="price-amount">
+              <span class="price-old">180,000</span>
+              <span class="price-current">129,000 <small>so'm</small></span>
+            </div>
+            <ul class="price-features">
+              <li>✦ Bergamot, atirgul, vanil musk</li>
+              <li>✦ 30ml premium flakon</li>
+              <li>✦ Bepul yetkazish (Toshkent)</li>
+              <li>✦ 1 oy kafolat</li>
+            </ul>
+            <a class="button button-primary price-btn" href="https://wa.me/998901234567?text=Assalomu alaykum! 'Nozik & nafis' atirini buyurtma qilmoqchiman" target="_blank" rel="noopener">
+              Buyurtma berish <span>→</span>
+            </a>
+          </div>
+
+          <div class="price-card price-card--featured reveal reveal-delay">
+            <div class="price-badge-featured">⭐ ENG MASHHUR</div>
+            <h3>Jozibali & sirli</h3>
+            <div class="price-amount">
+              <span class="price-old">280,000</span>
+              <span class="price-current">199,000 <small>so'm</small></span>
+            </div>
+            <ul class="price-features">
+              <li>✦ Ziravorlar, oud, amber charm</li>
+              <li>✦ 50ml premium flakon</li>
+              <li>✦ Bepul yetkazish (O'zbekiston)</li>
+              <li>✦ 3 oy kafolat</li>
+              <li>✦ Maxsus qadoqlash</li>
+            </ul>
+            <a class="button button-primary price-btn" href="https://wa.me/998901234567?text=Assalomu alaykum! 'Jozibali & sirli' atirini buyurtma qilmoqchiman" target="_blank" rel="noopener">
+              Buyurtma berish <span>→</span>
+            </a>
+          </div>
+
+          <div class="price-card reveal reveal-delay-2">
+            <div class="price-badge">PREMIUM</div>
+            <h3>Sof & erkin</h3>
+            <div class="price-amount">
+              <span class="price-old">220,000</span>
+              <span class="price-current">159,000 <small>so'm</small></span>
+            </div>
+            <ul class="price-features">
+              <li>✦ Limon, neroli, oq mushk</li>
+              <li>✦ 40ml premium flakon</li>
+              <li>✦ Bepul yetkazish (Toshkent)</li>
+              <li>✦ 2 oy kafolat</li>
+            </ul>
+            <a class="button button-primary price-btn" href="https://wa.me/998901234567?text=Assalomu alaykum! 'Sof & erkin' atirini buyurtma qilmoqchiman" target="_blank" rel="noopener">
+              Buyurtma berish <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="reviews section-shell" id="reviews">
+        <div class="section-top reveal">
+          <p class="eyebrow"><i></i> MIJOZLARIMIZ</p>
+          <h2>Ular <em>ishtiyoq</em> bilan<br />aytishadi</h2>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"XonAtir dan olgan atirimni hamma so'radi. Ayniqsa oud notasi juda yoqimli. Do'stlarimga ham tavsiya qilaman!"</p>
+            <div class="review-author">
+              <div class="review-avatar" style="background:#c6fa63;">N</div>
+              <div>
+                <strong>Nodira K.</strong>
+                <span>Toshkent • O'ziga xos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal reveal-delay">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Turmush o'rtog'imga sovg'a sifatida oldim. Juda mamnun bo'ldi! Sifat ajoyib, qadoqlash ham zamonaviy."</p>
+            <div class="review-author">
+              <div class="review-avatar" style="background:#f37962;">S</div>
+              <div>
+                <strong>Sanjar M.</strong>
+                <span>Samarqand • Sovga uchun</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal reveal-delay-2">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Har kuni ishlataman. Yengil va yoqimli hid. Tun bo'yi saqlanadi. Ancha oldingi atirlarimdan farqi bor!"</p>
+            <div class="review-author">
+              <div class="review-avatar" style="background:#6048c9;">A</div>
+              <div>
+                <strong>Akbar T.</strong>
+                <span>Qo'qon • Kundalik uchun</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card reveal">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Instagram dan ko'rib, sinab ko'rdim. Endi doimiy mijozman. Chevron ham ajoyib, 3 ta atir birgalikda keladi!"</p>
+            <div class="review-author">
+              <div class="review-avatar" style="background:#b8e9d4;">M</div>
+              <div>
+                <strong>Malika R.</strong>
+                <span>Andijon • Doimiy mijoz</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reviews-stats reveal">
+          <div class="stat-item">
+            <span class="stat-number" data-target="1200">0</span>
+            <span class="stat-label">Mijozlar</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="4.9">0</span>
+            <span class="stat-label">O'rtacha baho</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="98">0</span>
+            <span class="stat-label">% Mamnunlik</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Yil tajriba</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- INSTAGRAM SECTION -->
+      <section class="instagram-section section-shell">
+        <div class="section-top reveal">
+          <p class="eyebrow"><i></i> INSTAGRAM</p>
+          <h2>Bizni <em>kuzatib</em> boring</h2>
+          <p>Yangi mahsulotlar, aksiyalar va behind-the-scenes kontentlar.</p>
+        </div>
+        <div class="instagram-grid reveal">
+          <a href="https://instagram.com/xonatir" target="_blank" rel="noopener" class="insta-card">
+            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80" alt="Premium atir" loading="lazy" />
+            <div class="insta-overlay">♡ 342</div>
+          </a>
+          <a href="https://instagram.com/xonatir" target="_blank" rel="noopener" class="insta-card">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80" alt="Atir tanlash" loading="lazy" />
+            <div class="insta-overlay">♡ 218</div>
+          </a>
+          <a href="https://instagram.com/xonatir" target="_blank" rel="noopener" class="insta-card">
+            <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=400&q=80" alt="Yengil atir" loading="lazy" />
+            <div class="insta-overlay">♡ 189</div>
+          </a>
+          <a href="https://instagram.com/xonatir" target="_blank" rel="noopener" class="insta-card">
+            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=80" alt="Atir qadoqlash" loading="lazy" />
+            <div class="insta-overlay">♡ 276</div>
+          </a>
+        </div>
+        <div class="instagram-cta reveal">
+          <a href="https://instagram.com/xonatir" target="_blank" rel="noopener" class="button button-instagram">
+            @xonatir ni kuzatish <span>→</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- QUIZ SECTION -->
       <section class="finder-section section-shell" id="finder">
         <div class="finder-panel reveal">
           <div class="finder-intro">
             <p class="eyebrow eyebrow-light"><i></i> XONATIR FINDER</p>
             <h2>3 savolda<br /><em>hidingizni</em><br />toping.</h2>
             <p>Sizni bilish uchun atir nomlarini yodlash shart emas. Kayfiyatingizdan boshlaymiz.</p>
-            <div class="finder-proof"><span>01</span><p>Tanlovingiz saqlanadi — keyin ham qaytib ko‘rishingiz mumkin.</p></div>
+            <div class="finder-proof"><span>01</span><p>Tanlovingiz saqlanadi — keyin ham qaytib ko'rishingiz mumkin.</p></div>
           </div>
 
           <div class="quiz-card" id="quiz-card" aria-live="polite">
             <div class="quiz-top"><span id="quiz-count">01 / 03</span><div class="quiz-progress"><i id="quiz-progress"></i></div></div>
             <p class="quiz-kicker">SIZNING VIBINGIZ</p>
-            <h3 id="quiz-question">Bugun o‘zingizni qanday his qilmoqchisiz?</h3>
+            <h3 id="quiz-question">Bugun o'zingizni qanday his qilmoqchisiz?</h3>
             <div class="quiz-options" id="quiz-options">
               <button type="button" data-quiz-value="bloom">Nozik va romantik <span>↗</span></button>
               <button type="button" data-quiz-value="oud">Dadil va sirli <span>↗</span></button>
               <button type="button" data-quiz-value="fresh">Yengil va erkin <span>↗</span></button>
             </div>
             <div class="quiz-result" id="quiz-result" hidden>
-              <p>SIZGA MOS YO‘NALISH</p>
+              <p>SIZGA MOS YO'NALISH</p>
               <strong id="quiz-result-name">Jozibali & sirli</strong>
               <span id="quiz-result-note">Oud · amber · charm</span>
-              <button class="button button-primary" id="quiz-open-result" type="button">Tanlovni ko‘rish <span>→</span></button>
+              <button class="button button-primary" id="quiz-open-result" type="button">Tanlovni ko'rish <span>→</span></button>
               <button class="quiz-restart" id="quiz-restart" type="button">Qaytadan boshlash</button>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- SHOP ASSIST -->
       <section class="shop-assist section-shell">
         <div class="assist-grid reveal">
-          <div class="assist-title"><span>03</span><h2>Tanlovda<br />taxmin yo‘q.</h2></div>
-          <div class="assist-item"><span>01</span><h3>Notalarni biling</h3><p>Har atirda dastlabki, yurak va bazaviy notani alohida ko‘rasiz.</p></div>
-          <div class="assist-item"><span>02</span><h3>O‘zingizga moslang</h3><p>Qaysi kayfiyat va vaziyat uchun ekanini bir qarashda tanlaysiz.</p></div>
-          <div class="assist-item"><span>03</span><h3>Tanlovni saqlang</h3><p>Yoqgan yo‘nalishni yo‘qotmaysiz — unga yana qaytasiz.</p></div>
+          <div class="assist-title"><span>03</span><h2>Tanlovda<br />taxmin yo'q.</h2></div>
+          <div class="assist-item"><span>01</span><h3>Notalarni biling</h3><p>Har atirda dastlabki, yurak va bazaviy notani alohida ko'rasiz.</p></div>
+          <div class="assist-item"><span>02</span><h3>O'zingizga moslang</h3><p>Qaysi kayfiyat va vaziyat uchun ekanini bir qarashda tanlaysiz.</p></div>
+          <div class="assist-item"><span>03</span><h3>Tanlovni saqlang</h3><p>Yoqgan yo'nalishni yo'qotmaysiz — unga yana qaytasiz.</p></div>
         </div>
       </section>
 
+      <!-- STORY SECTION -->
       <section class="story-section section-shell" id="how-it-works">
         <div class="story-panel reveal">
           <div class="story-copy">
             <p class="eyebrow eyebrow-light"><i></i> XONATIR USULI</p>
             <h2>Atir tanlash<br /><em>shoshilmasdan</em><br />boshlanadi.</h2>
-            <p>Atir oddiy xarid emas. U sizning kayfiyatingiz, xotirangiz va ta’siringiz bilan uyg‘un bo‘lishi kerak.</p>
+            <p>Atir oddiy xarid emas. U sizning kayfiyatingiz, xotirangiz va ta'siringiz bilan uyg'un bo'lishi kerak.</p>
           </div>
           <div class="steps">
             <div class="step"><span>1</span><p>Kayfiyatingizni<br /><strong>tanlaysiz</strong></p></div>
             <div class="step-line"></div>
-            <div class="step"><span>2</span><p>Notalarni<br /><strong>o‘rganasiz</strong></p></div>
+            <div class="step"><span>2</span><p>Notalarni<br /><strong>o'rganasiz</strong></p></div>
             <div class="step-line"></div>
-            <div class="step"><span>3</span><p>O‘zingiznikini<br /><strong>topasiz</strong></p></div>
+            <div class="step"><span>3</span><p>O'zingiznikini<br /><strong>topasiz</strong></p></div>
           </div>
           <div class="grid-noise"></div>
         </div>
       </section>
 
+      <!-- FAQ SECTION -->
+      <section class="faq-section section-shell" id="faq">
+        <div class="section-top reveal">
+          <p class="eyebrow"><i></i> KO'P BERILADIGAN SAVOLLAR</p>
+          <h2>Savollaringiz<br /><em>javoblari</em></h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-toggle" type="button">
+              <span>Atir haqiqatan ham sifatlimi?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Ha! Biz faqat premium sifatli xomashyodan foydalanamiz. Har bir atir sinovdan o'tkazilgan va 8-12 soat saqlanish kafolatlanadi.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-toggle" type="button">
+              <span>Yetkazish qancha vaqt oladi?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Toshkent bo'ylab 1-2 ish kunida, viloyatlarga 3-5 ish kunida yetkazib beriladi. Bepul yetkazish mavjud!</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-toggle" type="button">
+              <span>Sovga sifatida olsam bo'ladimi?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Albatta! Maxsus qadoqlash va sovg'a uchun kartochka qo'shish imkoniyati bor. WhatsApp dan yozing.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-toggle" type="button">
+              <span>Qaytarish yoki almashtirish bormi?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Ha, 14 kun ichida qaytarish yoki almashtirish mumkin. Sifat muammo bo'lsa — to'liq qaytarish kafolatlanadi.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-toggle" type="button">
+              <span>Qanday to'lov usullari mavjud?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-content">
+              <p>Naqd pul, click, uzcard, visa va bank o'tkazmasi orqali to'lash mumkin. Yetkazishda naqd pul bilan ham.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUOTE / PROOF -->
       <section class="proof section-shell">
         <div class="proof-label reveal"><span>↳</span> XonAtir hissiyoti</div>
         <div class="quote reveal reveal-delay">
-          <p>“Atir — ko‘rinmaydigan,<br />ammo eng uzoq qoladigan<br /><em>taassurot.”</em></p>
+          <p>"Atir — ko'rinmaydigan,<br />ammo eng uzoq qoladigan<br /><em>taassurot."</em></p>
           <span>— XonAtir falsafasi</span>
         </div>
       </section>
     </main>
 
+    <!-- BOTTOM SHEET -->
     <div class="basket-sheet" id="basket-sheet" aria-hidden="true">
       <div class="sheet-backdrop" id="sheet-backdrop"></div>
       <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
@@ -200,15 +469,29 @@
           <span id="sheet-price">Woody notes</span>
         </div>
         <div class="sheet-content">
-          <img class="sheet-image" id="sheet-image" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="Tanlangan atir yo‘nalishi" />
+          <img class="sheet-image" id="sheet-image" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&amp;fit=crop&amp;w=960&amp;q=85" alt="Tanlangan atir yo'nalishi" />
           <div class="sheet-items" id="sheet-items"></div>
-          <div class="sheet-note"><span>✦</span><p>Bu demo tanlov. Asl versiyada bu yerga real atirlar, ularning hajmi, narxi va mavjudligi qo‘shiladi.</p></div>
+          <div class="sheet-note"><span>✦</span><p>Bu demo tanlov. Asl versiyada bu yerga real atirlar, ularning hajmi, narxi va mavjudligi qo'shiladi.</p></div>
         </div>
-        <button class="button button-primary sheet-order" id="order-button" type="button">Bu yo‘nalish menga mos <span>→</span></button>
+        <a class="button button-primary sheet-order" id="order-button" href="https://wa.me/998901234567" target="_blank" rel="noopener">
+          Bu yo'nalish menga mos <span>→</span>
+        </a>
       </section>
     </div>
 
-    <div class="toast" id="toast" role="status" aria-live="polite"><span>✦</span><p>Yo‘nalish tanlandi. Buyurtma kanali keyingi bosqichda ulanadi.</p></div>
+    <!-- TOAST -->
+    <div class="toast" id="toast" role="status" aria-live="polite"><span>✦</span><p>Yo'nalish tanlandi. Buyurtma kanali keyingi bosqichda ulanadi.</p></div>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a class="whatsapp-float" href="https://wa.me/998901234567?text=Assalomu alaykum! XonAtir dan atir buyurtma qilmoqchiman" target="_blank" rel="noopener" aria-label="WhatsApp orqali bog'lanish">
+      <svg viewBox="0 0 32 32" fill="currentColor" width="28" height="28"><path d="M16.004 0h-.008C7.174 0 0 7.176 0 16c0 3.5 1.132 6.744 3.054 9.378L1.054 31.2l6.072-1.966A15.91 15.91 0 0016.004 32C24.826 32 32 24.822 32 16S24.826 0 16.004 0zm9.34 22.608c-.39 1.1-1.93 2.014-3.16 2.28-.84.18-1.934.324-5.626-1.21-4.726-1.962-7.766-6.77-8-7.076-.226-.306-1.864-2.484-1.864-4.738s1.18-3.358 1.6-3.82c.39-.462.85-.578 1.132-.578.282 0 .564.002.81.016.26.012.61-.098.948.724.35.846 1.194 2.914 1.296 3.126.102.212.17.46.034.736-.136.28-.204.454-.406.698-.204.244-.428.546-.61.732-.17.17-.346.354-.148.696.198.342.88 1.454 1.888 2.358 1.298 1.16 2.394 1.518 2.736 1.684.342.166.544.14.744-.082.2-.224.852-.994 1.08-1.336.226-.342.452-.284.766-.17.318.114 2.01.95 2.356 1.124.344.174.574.26.658.404.084.144.084.836-.306 1.936z"/></svg>
+    </a>
+
+    <!-- TELEGRAM FLOATING BUTTON -->
+    <a class="telegram-float" href="https://t.me/xonatir" target="_blank" rel="noopener" aria-label="Telegram orqali bog'lanish">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012.056 0h-.112zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+
     <script src="app.js"></script>
   </body>
 </html>
