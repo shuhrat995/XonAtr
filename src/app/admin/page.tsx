@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useStore } from '@/lib/store';
-import Navigation from '@/components/layout/Navigation';
-import Footer from '@/components/layout/Footer';
 import AdminPanel from '@/components/admin/AdminPanel';
 import { Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
 
@@ -47,7 +45,6 @@ export default function AdminPage() {
 
   return (
     <>
-      <Navigation />
       {showLogin && !isAdmin ? (
         <main className="min-h-screen flex items-center justify-center pt-20 pb-8 relative overflow-hidden">
           {/* Background */}
@@ -134,7 +131,6 @@ export default function AdminPage() {
       ) : (
         <AdminPanel />
       )}
-      <Footer />
     </>
   );
 }
