@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const names = [
-  { name: 'Nodira', city: 'Toshkent' },
+  { name: 'Nodira', city: 'Xorazm' },
   { name: 'Sanjar', city: 'Samarqand' },
   { name: 'Malika', city: 'Buxoro' },
   { name: 'Jasur', city: 'Farg\'ona' },

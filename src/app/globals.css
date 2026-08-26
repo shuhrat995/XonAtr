@@ -239,3 +239,46 @@ body {
 .animate-social {
   animation: social-slide 5s ease-in-out forwards;
 }
+
+/* Admin Panel */
+.admin-sidebar {
+  background: linear-gradient(180deg, #1a2e1a 0%, #0f1f0f 100%);
+}
+
+.admin-card {
+  background: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.admin-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Responsive admin panel */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    position: fixed;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    z-index: 50;
+    transition: left 0.3s ease;
+  }
+  .admin-sidebar.open {
+    left: 0;
+  }
+  .admin-main {
+    margin-left: 0 !important;
+  }
+}
+
+/* Sales bar animation */
+@keyframes sales-grow {
+  from { width: 0; }
+}
+
+.animate-sales-grow {
+  animation: sales-grow 0.8s ease-out forwards;
+}

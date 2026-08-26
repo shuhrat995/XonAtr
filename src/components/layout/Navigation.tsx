@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { useStore } from '@/lib/store';
-import { ShoppingCart, Menu, X, Search, User, LogOut, ChevronDown } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, User, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
@@ -12,10 +12,11 @@ export default function Navigation() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [secretInput, setSecretInput] = useState('');
   const [showSecret, setShowSecret] = useState(false);
+  const [secretError, setSecretError] = useState('');
   const searchRef = useRef<HTMLInputElement>(null);
   const secretRef = useRef<HTMLInputElement>(null);
 
-  const { cart, user, logout, setFilter, filters, activateSecretMode, isSecretMode, isAdmin } = useStore();
+  const { cart, user, logout, setFilter, filters, activateSecretMode } = useStore();
   const cartCount = useStore((s) => s.getCartCount());
 
   useEffect(() => {
@@ -38,7 +39,12 @@ export default function Navigation() {
       activateSecretMode('xonAdmin');
       setSecretInput('');
       setShowSecret(false);
+      setSecretError('');
       window.location.href = '/admin';
+    } else {
+      setSecretError('Noto\'g\'ri kod!');
+      setSecretInput('');
+      setTimeout(() => setSecretError(''), 3000);
     }
   };
 
@@ -204,7 +210,7 @@ export default function Navigation() {
                     onClick={() => setIsOpen(false)}
                     className="block px-4 py-2.5 rounded-lg text-sm font-medium btn-primary text-white text-center mt-2"
                   >
-                    Kirish / Ro'yxatdan o'tish
+                    Kirish / Ro&apos;yxatdan o&apos;tish
                   </Link>
                 )}
               </div>
@@ -227,6 +233,9 @@ export default function Navigation() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xs text-text-muted">🔒 Maxsus kirish</span>
               </div>
+              {secretError && (
+                <p className="text-xs text-red-400 mb-2">{secretError}</p>
+              )}
               <div className="flex gap-2">
                 <input
                   ref={secretRef}
@@ -243,6 +252,13 @@ export default function Navigation() {
                   Kirish
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={() => { setShowSecret(false); setSecretError(''); setSecretInput(''); }}
+                className="mt-2 text-[10px] text-text-muted hover:text-text"
+              >
+                Bekor qilish
+              </button>
             </motion.form>
           ) : (
             <motion.button

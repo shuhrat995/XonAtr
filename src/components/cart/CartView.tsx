@@ -2,22 +2,59 @@
 
 import { motion } from 'framer-motion';
 import { useStore } from '@/lib/store';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, Shield, Truck, RotateCcw } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, Shield, Truck, RotateCcw, MapPin, Navigation } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function CartView() {
-  const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } = useStore();
+  const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart, addOrder, user } = useStore();
   const total = getCartTotal();
   const [showCheckout, setShowCheckout] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState(user?.phone || '');
+  const [locationUrl, setLocationUrl] = useState('');
+  const [showMap, setShowMap] = useState(false);
 
   const formatPrice = (price: number) =>
     new Intl.NumberFormat('uz-UZ').format(price) + ' so\'m';
 
   const handleOrder = () => {
+    if (!address || !phone) return;
+    const order = {
+      id: 'o' + Date.now(),
+      userId: user?.id || 'guest',
+      items: cart.map(item => ({ perfume: item.perfume, quantity: item.quantity })),
+      total,
+      status: 'pending' as const,
+      address,
+      phone,
+      createdAt: new Date().toISOString(),
+      locationUrl,
+    };
+    addOrder(order);
     setOrderPlaced(true);
     clearCart();
+  };
+
+  const openGoogleMaps = () => {
+    const query = encodeURIComponent(address || 'Xorazm, O\'zbekiston');
+    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+  };
+
+  const shareLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocationUrl(`https://www.google.com/maps?q=${latitude},${longitude}`);
+          setAddress(`Xorazm (${latitude.toFixed(4)}, ${longitude.toFixed(4)})`);
+        },
+        () => {
+          alert('Joylashuv aniqlanmadi. Iltimos, manzilni qo\'lda kiriting.');
+        }
+      );
+    }
   };
 
   if (orderPlaced) {
@@ -101,7 +138,6 @@ export default function CartView() {
               <p className="text-sm text-text-muted mt-0.5">{item.perfume.volume}</p>
 
               <div className="flex items-center justify-between mt-3">
-                {/* Quantity */}
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => updateQuantity(item.perfume.id, item.quantity - 1)}
@@ -182,22 +218,66 @@ export default function CartView() {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-3"
             >
-              <input
-                type="text"
-                placeholder="Yetkazish manzili"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent/50"
-              />
+              {/* Address */}
+              <div className="relative">
+                <MapPin size={14} className="absolute left-3 top-3 text-text-muted" />
+                <input
+                  type="text"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Yetkazish manzili (masalan: Xorazm, Shayxontohur)"
+                  className="w-full pl-9 pr-3 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent/50"
+                />
+              </div>
+
+              {/* Map buttons */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={openGoogleMaps}
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-text-muted hover:text-accent hover:border-accent/30 transition-all"
+                >
+                  <Navigation size={12} />
+                  Xaritada ko&apos;rish
+                </button>
+                <button
+                  type="button"
+                  onClick={shareLocation}
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-text-muted hover:text-accent hover:border-accent/30 transition-all"
+                >
+                  <MapPin size={12} />
+                  Joylashuvni ulashish
+                </button>
+              </div>
+
+              {locationUrl && (
+                <a
+                  href={locationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs text-accent hover:underline"
+                >
+                  <MapPin size={10} />
+                  Xaritada joylashuvni ko&apos;rish
+                </a>
+              )}
+
+              {/* Phone */}
               <input
                 type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="Telefon raqam"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent/50"
+                className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent/50"
               />
               <p className="text-[11px] text-red-400">
-                ⚠️ Yetkazishda shu nomerga tel bo&apos;ladi
+                ⚠️ Yetkazishda shu nomerga tel bo&apos;ladi, iltimos to&apos;g&apos;ri raqam yozing
               </p>
+
               <button
                 onClick={handleOrder}
-                className="w-full flex items-center justify-center gap-2 py-3.5 btn-gold rounded-xl text-white font-semibold"
+                disabled={!address || !phone}
+                className="w-full flex items-center justify-center gap-2 py-3.5 btn-gold rounded-xl text-white font-semibold disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 ✅ Tasdiqlash — {formatPrice(total)}
               </button>

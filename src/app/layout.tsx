@@ -10,7 +10,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Xon Atr — Premium Parfyumeriya | Atir sotib olish",
   description: "Xon Atr — O'zbekistondagi eng ishonchli parfyumeriya do'koni. Premium sifat, bepul yetkazish, 14 kun kafolat. Erkaklar va ayollar uchun atirlar.",
-  keywords: "atir, parfyumeriya, xon atr, erkaklar atiri, ayollar atiri, sovg'a, toshkent",
+  keywords: "atir, parfyumeriya, xon atr, erkaklar atiri, ayollar atiri, sovg'a, xorazm, xiva",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

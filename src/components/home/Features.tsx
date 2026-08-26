@@ -13,7 +13,7 @@ const features = [
   {
     icon: <Truck size={24} />,
     title: 'Bepul yetkazish',
-    description: 'Toshkent bo\'ylab 1-3 kun ichida bepul yetkaziladi',
+    description: 'Xorazm bo\'ylab 1-3 kun ichida bepul yetkaziladi',
     color: 'from-blue-500 to-cyan-500',
   },
   {

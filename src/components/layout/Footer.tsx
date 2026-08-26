@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5 text-sm text-text-muted">
                 <MapPin size={14} className="text-accent shrink-0" />
-                Toshkent, O&apos;zbekiston
+                Xorazm, O&apos;zbekiston
               </li>
             </ul>
           </div>

@@ -48,6 +48,7 @@ export interface Order {
   address: string;
   phone: string;
   createdAt: string;
+  locationUrl?: string;
 }
 
 export interface Category {
@@ -86,4 +87,18 @@ export interface FilterState {
   scentType: string;
   searchQuery: string;
   sortBy: 'newest' | 'price-low' | 'price-high' | 'popular' | 'rating';
+}
+
+export interface ProductSales {
+  productId: string;
+  productName: string;
+  totalSold: number;
+  totalRevenue: number;
+}
+
+export interface MonthlyStats {
+  month: string;
+  registrations: number;
+  orders: number;
+  revenue: number;
 }
